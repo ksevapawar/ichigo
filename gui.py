@@ -13,6 +13,8 @@ import cv2
 import pyautogui
 import sys
 
+import Gesture_Controller
+
 chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
 def alarm(set_alarm_timer):
     while True:
@@ -108,6 +110,10 @@ def gui():
         query = textF.get()
         if query=='Google':
             webbrowser.get(chrome_path).open('https://www.google.com/')
+        if query=='launch gesture recognition' :
+            gc = Gesture_Controller.GestureController()
+            t = threading.Thread(target=gc.start)
+            t.start()
         if query=='YouTube':
             webbrowser.get(chrome_path).open('https://www.youtube.com/')
         if query=='set reminder':
