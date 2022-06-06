@@ -52,10 +52,6 @@ model = load_model(model_path)
 
 # functions
 def detect_wake_word(spec_data):
-    """
-    Predict location of wake word
-    note: spec has shape (n_freqs, T_x), we need to swap axes
-    """
     spec_data = spec_data.swapaxes(0, 1)
     spec_data = np.expand_dims(spec_data, axis=0)
     preds = model.predict(spec_data)
@@ -64,9 +60,7 @@ def detect_wake_word(spec_data):
 
 
 def is_new_detection(preds, chunk_duration, feed_duration, threshold):
-    """
-    Detects whether a new wake word has been detected in the chunk
-    """
+
     # mask predications and extract the wanted chunk
     preds = preds > threshold
     chunk_pred_samples = int(len(preds) * chunk_duration / feed_duration)
@@ -82,9 +76,7 @@ def is_new_detection(preds, chunk_duration, feed_duration, threshold):
 
 
 def get_spectrogram(audio_data):
-    """
-    Plot and calculate spectrogram for audio data.
-    """
+
     n_fft = 200  # Length of each window segment
     fs = 8000  # Sampling frequencies
     n_overlap = 120  # Overlap between windows

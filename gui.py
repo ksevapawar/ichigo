@@ -50,14 +50,12 @@ def gui():
         engine.runAndWait()
 
 
-# pyttsx3
     bot = ChatBot("ICHIGO Bot")
 
     convo = open('chat.txt', 'r').readlines()
 
     trainer = ListTrainer(bot)
 
-# now training the bot with the help of trainer
 
     trainer.train(convo)
 
@@ -76,7 +74,6 @@ def gui():
     #photoL.pack(pady=5)
 
 
-# takey query : it takes audio as input from user and convert it to string..
 
     def takeQuery():
         sr = s.Recognizer()
@@ -110,9 +107,9 @@ def gui():
         query = textF.get()
         if query=='Google':
             webbrowser.get(chrome_path).open('https://www.google.com/')
-        if query=='launch gesture recognition' :
+        if query=='use hand' :
             gc = Gesture_Controller.GestureController()
-            t = threading.Thread(target=gc.start)
+            t = threading.Thread(target = gc.start)
             t.start()
         if query=='YouTube':
             webbrowser.get(chrome_path).open('https://www.youtube.com/')
@@ -147,7 +144,6 @@ def gui():
 
     frame.pack()
 
-# creating text field
 
     textF = Entry(main, font=("Courier", 10))
     textF.pack(fill=X, pady=10)
@@ -157,12 +153,10 @@ def gui():
     btn.pack()
 
 
-# creating a function
     def enter_function(event):
         btn.invoke()
 
 
-# going to bind main window with enter key...
 
     main.bind('<Return>', enter_function)
 

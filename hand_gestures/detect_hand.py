@@ -22,7 +22,7 @@ def hdet(frame, min_YCrCb, max_YCrCb):
 
     skinRegion = cv2.inRange(imgYCrCb, min_YCrCb, max_YCrCb)
 
-    contours, hierarchy = cv2.findContours(
+    contours, hierarchy = cv2.findContours(+
         skinRegion, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
     cx, cy, cw, ch = 0, 0, 0, 0
